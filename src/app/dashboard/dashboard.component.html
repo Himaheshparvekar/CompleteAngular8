@@ -41,7 +41,7 @@
         <div class="col-12 text-center pt-2 pb-2" style="font-family: 'Arial Narrow'">CLIENTS</div>
       <div class="col-12">
         <ul class="list-group list-group-flush">
-          <!-- <li class="list-group-item" *ngFor="let client of Clients">{{client}}</li> -->
+           <li class="list-group-item" *ngFor="let client of Clients">{{client}}</li> 
         </ul>
       </div>
     </div>
@@ -55,13 +55,11 @@
 <div class="col-6 text-left">
 <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-        Project A
+        Project
     </button>
     <div class="dropdown-menu">
-        <a href="#" class="dropdown-item">Project A</a>
-        <a href="#" class="dropdown-item">Project B</a>
-        <a href="#" class="dropdown-item">Project C</a>
-        <a href="#" class="dropdown-item">Project D</a>
+        <a href="#" class="dropdown-item" *ngFor= "let project of Projects">{{project}}</a>
+
     </div>
 </div>
 
@@ -73,10 +71,8 @@
             2020
         </button>
         <div class="dropdown-menu">
-            <a href="#" class="dropdown-item">2020</a>
-            <a href="#" class="dropdown-item">2019</a>
-            <a href="#" class="dropdown-item">2018</a>
-            <a href="#" class="dropdown-item">2017</a>
+            <a href="#" class="dropdown-item" *ngFor= "let year of Years">{{year}}</a>
+           
         </div>
     </div>
 </div>
@@ -111,15 +107,15 @@
               <th>Team Members Count</th>
               <th>Temporarily Unavailable Members</th>
             </tr>
-            <tr>
+            <tr *ngFor="let member of TeamMemberSummary">
               <td>
-                <b>East</b>
+                <b>{{member.Region}}</b>
               </td>
               <td>
-                10
+                {{member.TeamMembersCount}}
               </td>
               <td>
-              20
+                {{member.TemporaryUnavailableMembers}}
               </td>
             </tr>
   
@@ -136,14 +132,14 @@
         style="background-color:#718d97; font-family: 'Arial Narrow'">TEAM MEMBERS</div>
       <div class="col-lg-12 pt-2">
         <div class="accordion" id="accordion1">
-          <div class="card">
+          <div class="card" *ngFor="let teamMembersGroup of TeamMembers; let i= index;">
             <div class="card-header bg-secondary" id="card1">
               <h2 class="mb-0">
-                <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#cardbody1"
-                  >East</button>
+                <button class="btn btn-link text-white" type="button" data-toggle="collapse" [attr.data-target]="'#cardbody'+i"
+                  >{{teamMembersGroup.Region}}</button>
               </h2>
             </div>
-            <div class="collapse show" id="cardbody1"  data-parent="#accordion1">
+            <div class="collapse show" [id]="'#cardbody'+ i" data-parent="#accordion1">
               <div class="card-body">
                 <table class="table">
                   <thead>
@@ -154,48 +150,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                     <td>1</td>
-                     <td>ford</td>
-                     <td><i class="fa fa-phone">available</i></td>
+                    <tr *ngFor="let member of teamMembersGroup.Members">
+                     <td>{{member.ID}}</td>
+                     <td>{{member.Name}}</td>
+                     <td><i class="fa fa-phone">{{member.Status}}</i></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-
-          <div class="card">
-            <div class="card-header bg-secondary" id="card2">
-              <h2 class="mb-0">
-                <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#cardbody2"
-                  >South</button>
-              </h2>
-            </div>
-            <div class="collapse show" id="cardbody2"  data-parent="#accordion1">
-              <div class="card-body">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                     <td>1</td>
-                     <td>ford</td>
-                     <td><i class="fa fa-phone">available</i></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-
-
 
 
         </div>

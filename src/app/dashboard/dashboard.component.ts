@@ -16,6 +16,15 @@ export class DashboardComponent implements OnInit {
     CurrentExpenditure: Number;
     AvailableFunds: Number;
 
+    Clients:string[];
+    Projects: string[];
+    Years:number[]=[]
+    TeamMemberSummary=[];
+    TeamMembers=[];
+
+
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -28,6 +37,55 @@ export class DashboardComponent implements OnInit {
     this.ProjectCost = 2113507;
     this.CurrentExpenditure = 96788;
     this.AvailableFunds = 52536;
+
+    this.Clients=[
+      "Mahesh pvt ltd",
+      "Umesh pvt ltd",
+      "Tanishka pvt ltd"
+    ];
+    this.Projects=[
+                  "Angular Project","Core Project","Node Project","Mongo Project"];
+
+    for(var i = 2010 ; i<=2020; i++)
+    {
+      this.Years.push(i);
+    }
+
+
+    this.TeamMemberSummary= [
+    {Region: "East", TeamMembersCount:20, TemporaryUnavailableMembers:11},
+    {Region: "WEST", TeamMembersCount:11, TemporaryUnavailableMembers:4},
+    {Region: "North", TeamMembersCount:55, TemporaryUnavailableMembers:55},
+    {Region: "South", TeamMembersCount:99, TemporaryUnavailableMembers:100}
+]
+    
+
+this.TeamMembers=[
+{Region:"East" , Members:[
+{ID:1 , Name: "Ford" ,Status:"Available"},
+{ID:1 , Name: "Toyota" ,Status:"Available"},
+{ID:1 , Name: "Fiat" ,Status:"UnAvailable"}
+]   },
+
+{Region:"West" , Members:[
+  {ID:1 , Name: "Maruti" ,Status:"Available"},
+  {ID:1 , Name: "Padmini" ,Status:"Available"},
+  {ID:1 , Name: "Mahindra" ,Status:"UnAvailable"}
+  ]},
+
+  {Region:"South" , Members:[
+    {ID:1 , Name: "Lamborgini" ,Status:"Available"},
+    {ID:1 , Name: "Skoda" ,Status:"Available"},
+    {ID:1 , Name: "Opel" ,Status:"UnAvailable"}
+    ]},
+
+    {Region:"North" , Members:[
+      {ID:1 , Name: "BMW" ,Status:"Available"},
+      {ID:1 , Name: "Mercedez" ,Status:"Available"}     
+      ]}
+
+];
+
 
   }
 
