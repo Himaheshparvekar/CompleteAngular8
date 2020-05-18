@@ -85,6 +85,40 @@ this.TeamMembers=[
       ]}
 
 ];
+  }
+
+  onProjectChanged($event)
+  {
+    console.log($event.target.innerHTML);
+    if($event.target.innerHTML=="Core Project")
+    {
+      this.ProjectCost = 50;
+      this.CurrentExpenditure = 50;
+      this.AvailableFunds = 5000000;
+    }
+
+    if($event.target.innerHTML=="Angular Project")
+    {
+      this.ProjectCost = 10;
+      this.CurrentExpenditure = 10;
+      this.AvailableFunds = 888888888;
+    }
+
+
+
+    else if($event.target.innerHTML=="Node Project")
+    {
+      this.ProjectCost = 100;
+      this.CurrentExpenditure = 100;
+      this.AvailableFunds = 1000000;
+    }
+
+    else if($event.target.innerHTML=="Mongo Project")
+    {
+      this.ProjectCost = 900;
+      this.CurrentExpenditure = 900;
+      this.AvailableFunds = 900000;
+    }
 
 
   }
