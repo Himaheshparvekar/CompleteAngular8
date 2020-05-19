@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
     Clients:string[];
     Projects: string[];
     Years:number[]=[]
-    TeamMemberSummary=[];
+    TeamMembersSummary=[];
     TeamMembers=[];
 
 
@@ -52,7 +52,7 @@ export class DashboardComponent implements OnInit {
     }
 
 
-    this.TeamMemberSummary= [
+    this.TeamMembersSummary= [
     {Region: "East", TeamMembersCount:20, TemporaryUnavailableMembers:11},
     {Region: "WEST", TeamMembersCount:11, TemporaryUnavailableMembers:4},
     {Region: "North", TeamMembersCount:55, TemporaryUnavailableMembers:55},
@@ -64,19 +64,19 @@ this.TeamMembers=[
 {Region:"East" , Members:[
 {ID:1 , Name: "Ford" ,Status:"Available"},
 {ID:1 , Name: "Toyota" ,Status:"Available"},
-{ID:1 , Name: "Fiat" ,Status:"UnAvailable"}
+{ID:1 , Name: "Fiat" ,Status:"Busy"}
 ]   },
 
 {Region:"West" , Members:[
   {ID:1 , Name: "Maruti" ,Status:"Available"},
   {ID:1 , Name: "Padmini" ,Status:"Available"},
-  {ID:1 , Name: "Mahindra" ,Status:"UnAvailable"}
+  {ID:1 , Name: "Mahindra" ,Status:"Busy"}
   ]},
 
   {Region:"South" , Members:[
     {ID:1 , Name: "Lamborgini" ,Status:"Available"},
     {ID:1 , Name: "Skoda" ,Status:"Available"},
-    {ID:1 , Name: "Opel" ,Status:"UnAvailable"}
+    {ID:1 , Name: "Opel" ,Status:"Busy"}
     ]},
 
     {Region:"North" , Members:[
@@ -85,7 +85,40 @@ this.TeamMembers=[
       ]}
 
 ];
+  }
 
+  onProjectChange($event)
+  {
+    console.log($event.target.innerHTML);
+    if($event.target.innerHTML=="Core Project")
+    {
+      this.ProjectCost = 50;
+      this.CurrentExpenditure = 50;
+      this.AvailableFunds = 5000000;
+    }
+
+    if($event.target.innerHTML=="Angular Project")
+    {
+      this.ProjectCost = 10;
+      this.CurrentExpenditure = 10;
+      this.AvailableFunds = 888888888;
+    }
+
+
+
+    else if($event.target.innerHTML=="Node Project")
+    {
+      this.ProjectCost = 100;
+      this.CurrentExpenditure = 100;
+      this.AvailableFunds = 1000000;
+    }
+
+    else if($event.target.innerHTML=="Mongo Project")
+    {
+      this.ProjectCost = 900;
+      this.CurrentExpenditure = 900;
+      this.AvailableFunds = 900000;
+    }
 
   }
 
