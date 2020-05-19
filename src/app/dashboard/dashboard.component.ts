@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
     TeamMembersSummary=[];
     TeamMembers=[];
 
+   toDay: any= Date;
+
 
 
 
@@ -33,10 +35,12 @@ export class DashboardComponent implements OnInit {
     this.NoOfTeamMembers = 67;
     this.TotalCostOfAllProjects = 240;
     this.PendingTasks = 15;
-    this.UpComingProjects = 2;
+    this.UpComingProjects = 0.5;
     this.ProjectCost = 2113507;
     this.CurrentExpenditure = 96788;
     this.AvailableFunds = 52536;
+    const d: Date = new Date(); // but the type can also be inferred from "new Date()" a
+    this.toDay=d;
 
     this.Clients=[
       "Mahesh pvt ltd",
@@ -53,10 +57,10 @@ export class DashboardComponent implements OnInit {
 
 
     this.TeamMembersSummary= [
-    {Region: "East", TeamMembersCount:20, TemporaryUnavailableMembers:11},
-    {Region: "WEST", TeamMembersCount:11, TemporaryUnavailableMembers:4},
-    {Region: "North", TeamMembersCount:55, TemporaryUnavailableMembers:55},
-    {Region: "South", TeamMembersCount:99, TemporaryUnavailableMembers:100}
+    {Region: "East", TeamMembersCount:20, TemporarilyUnavailableMembers:11},
+    {Region: "WEST", TeamMembersCount:11, TemporarilyUnavailableMembers:4},
+    {Region: "North", TeamMembersCount:55, TemporarilyUnavailableMembers:55},
+    {Region: "South", TeamMembersCount:99, TemporarilyUnavailableMembers:100}
 ]
     
 
