@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DashboardService} from '../../dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,7 +28,12 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private dashBoardService:DashboardService) 
+  {
+
+
+
+  }
 
   ngOnInit(): void {
     this.Designation = "Team Leader";
@@ -55,13 +61,8 @@ export class DashboardComponent implements OnInit {
       this.Years.push(i);
     }
 
+this.TeamMembersSummary=this.dashBoardService.getTeamMembersSummary();
 
-    this.TeamMembersSummary= [
-    {Region: "East", TeamMembersCount:20, TemporarilyUnavailableMembers:11},
-    {Region: "WEST", TeamMembersCount:11, TemporarilyUnavailableMembers:4},
-    {Region: "North", TeamMembersCount:55, TemporarilyUnavailableMembers:55},
-    {Region: "South", TeamMembersCount:99, TemporarilyUnavailableMembers:100}
-]
     
 
 this.TeamMembers=[
