@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class DashboardService {
-
-  constructor() { }
-
-  getTeamMembersSummary():any
+@Injectable()
+export class DashboardService
+{
+  getTeamMembersSummary(): any[]
   {
-    var TeamMembersSummary= [
-      {Region: "East", TeamMembersCount:20, TemporarilyUnavailableMembers:11},
-      {Region: "WEST", TeamMembersCount:11, TemporarilyUnavailableMembers:4},
-      {Region: "North", TeamMembersCount:55, TemporarilyUnavailableMembers:55},
-      {Region: "South", TeamMembersCount:99, TemporarilyUnavailableMembers:100}
-  ];
-  return TeamMembersSummary;
+    var TeamMembersSummary = [
+      { Region: "East", TeamMembersCount: 20, TemporarilyUnavailableMembers: 4 },
+      { Region: "West", TeamMembersCount: 15, TemporarilyUnavailableMembers: 8 },
+      { Region: "South", TeamMembersCount: 17, TemporarilyUnavailableMembers: 1 },
+      { Region: "North", TeamMembersCount: 15, TemporarilyUnavailableMembers: 6 }
+    ];
+    return TeamMembersSummary;
   }
 }
+

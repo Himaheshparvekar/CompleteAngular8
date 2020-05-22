@@ -1,130 +1,123 @@
 import { Component, OnInit } from '@angular/core';
-import {DashboardService} from '../../dashboard.service';
+import { DashboardService } from '../../dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
-    Designation: String;
-    Username: String;
-    NoOfTeamMembers: Number;
-    TotalCostOfAllProjects: Number;
-    PendingTasks: Number;
-    UpComingProjects: Number;
-    ProjectCost: Number;
-    CurrentExpenditure: Number;
-    AvailableFunds: Number;
+export class DashboardComponent implements OnInit
+{
+  Designation: string;
+  Username: string;
+  NoOfTeamMembers: number;
+  TotalCostOfAllProjects: number;
+  PendingTasks: number;
+  UpComingProjects: number;
+  ProjectCost: number;
+  CurrentExpenditure: number;
+  AvailableFunds: number;
+  ToDay: Date;
 
-    Clients:string[];
-    Projects: string[];
-    Years:number[]=[]
-    TeamMembersSummary=[];
-    TeamMembers=[];
+  Clients: string[];
+  Projects: string[];
+  Years: number[] = [];
+  TeamMembersSummary = [];
+  TeamMembers = [];
 
-   toDay: any= Date;
-
-
-
-
-  constructor(private dashBoardService:DashboardService) 
+  constructor(private dashboardService: DashboardService )
   {
-
-
-
   }
 
-  ngOnInit(): void {
+  ngOnInit()
+  {
     this.Designation = "Team Leader";
-    this.Username = "My Twin Flame";
+    this.Username = "Scott Smith";
     this.NoOfTeamMembers = 67;
     this.TotalCostOfAllProjects = 240;
     this.PendingTasks = 15;
-    this.UpComingProjects = 0.5;
+    this.UpComingProjects = 0.2;
     this.ProjectCost = 2113507;
     this.CurrentExpenditure = 96788;
     this.AvailableFunds = 52536;
-    const d: Date = new Date(); // but the type can also be inferred from "new Date()" a
-    this.toDay=d;
+    this.ToDay = new Date();
 
-    this.Clients=[
-      "Mahesh pvt ltd",
-      "Umesh pvt ltd",
-      "Tanishka pvt ltd"
+    this.Clients = [
+      "ABC Infotech Ltd.", "DEF Software Solutions", "GHI Industries"
     ];
-    this.Projects=[
-                  "Angular Project","Core Project","Node Project","Mongo Project"];
 
-    for(var i = 2010 ; i<=2020; i++)
-    {
+    this.Projects = [
+      "Project A", "Project B", "Project C", "Project D"
+    ];
+
+    for (var i = 2019; i >= 2010; i--) {
       this.Years.push(i);
     }
 
-this.TeamMembersSummary=this.dashBoardService.getTeamMembersSummary();
+    this.TeamMembersSummary = this.dashboardService.getTeamMembersSummary();
 
-    
 
-this.TeamMembers=[
-{Region:"East" , Members:[
-{ID:1 , Name: "Ford" ,Status:"Available"},
-{ID:1 , Name: "Toyota" ,Status:"Available"},
-{ID:1 , Name: "Fiat" ,Status:"Busy"}
-]   },
-
-{Region:"West" , Members:[
-  {ID:1 , Name: "Maruti" ,Status:"Available"},
-  {ID:1 , Name: "Padmini" ,Status:"Available"},
-  {ID:1 , Name: "Mahindra" ,Status:"Busy"}
-  ]},
-
-  {Region:"South" , Members:[
-    {ID:1 , Name: "Lamborgini" ,Status:"Available"},
-    {ID:1 , Name: "Skoda" ,Status:"Available"},
-    {ID:1 , Name: "Opel" ,Status:"Busy"}
-    ]},
-
-    {Region:"North" , Members:[
-      {ID:1 , Name: "BMW" ,Status:"Available"},
-      {ID:1 , Name: "Mercedez" ,Status:"Available"}     
-      ]}
-
-];
+    this.TeamMembers = [
+      {
+        Region: "East", Members: [
+          { ID: 1, Name: "Ford", Status: "Available" },
+          { ID: 2, Name: "Miller", Status: "Available" },
+          { ID: 3, Name: "Jones", Status: "Busy" },
+          { ID: 4, Name: "James", Status: "Busy" }
+        ]
+      },
+      {
+        Region: "West", Members: [
+          { ID: 5, Name: "Anna", Status: "Available" },
+          { ID: 6, Name: "Arun", Status: "Available" },
+          { ID: 7, Name: "Varun", Status: "Busy" },
+          { ID: 8, Name: "Jasmine", Status: "Busy" }
+        ]
+      },
+      {
+        Region: "South", Members: [
+          { ID: 9, Name: "Krishna", Status: "Available" },
+          { ID: 10, Name: "Mohan", Status: "Available" },
+          { ID: 11, Name: "Raju", Status: "Busy" },
+          { ID: 12, Name: "Farooq", Status: "Busy" }
+        ]
+      },
+      {
+        Region: "North", Members: [
+          { ID: 13, Name: "Jacob", Status: "Available" },
+          { ID: 14, Name: "Smith", Status: "Available" },
+          { ID: 15, Name: "Jones", Status: "Busy" },
+          { ID: 16, Name: "James", Status: "Busy" }
+        ]
+      }
+    ];
   }
 
   onProjectChange($event)
   {
-    console.log($event.target.innerHTML);
-    if($event.target.innerHTML=="Core Project")
+    if($event.target.innerHTML == "Project A")
     {
-      this.ProjectCost = 50;
-      this.CurrentExpenditure = 50;
-      this.AvailableFunds = 5000000;
+      this.ProjectCost = 2113507;
+      this.CurrentExpenditure = 96788;
+      this.AvailableFunds = 52436;
     }
-
-    if($event.target.innerHTML=="Angular Project")
+    else if($event.target.innerHTML == "Project B")
     {
-      this.ProjectCost = 10;
-      this.CurrentExpenditure = 10;
-      this.AvailableFunds = 888888888;
+      this.ProjectCost = 88923;
+      this.CurrentExpenditure = 22450;
+      this.AvailableFunds = 2640;
     }
-
-
-
-    else if($event.target.innerHTML=="Node Project")
+    else if($event.target.innerHTML == "Project C")
     {
-      this.ProjectCost = 100;
-      this.CurrentExpenditure = 100;
-      this.AvailableFunds = 1000000;
+      this.ProjectCost = 662183;
+      this.CurrentExpenditure = 7721;
+      this.AvailableFunds = 9811;
     }
-
-    else if($event.target.innerHTML=="Mongo Project")
+    else if($event.target.innerHTML == "Project D")
     {
-      this.ProjectCost = 900;
-      this.CurrentExpenditure = 900;
-      this.AvailableFunds = 900000;
+      this.ProjectCost = 928431;
+      this.CurrentExpenditure = 562;
+      this.AvailableFunds = 883;
     }
-
   }
-
 }
